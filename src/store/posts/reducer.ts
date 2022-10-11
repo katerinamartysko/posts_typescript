@@ -1,8 +1,8 @@
-import { LoadConversationAction } from './actions';
-import c from '../constants';
+import { CreatePostActions, DeletePostsActions, GetPostsAction } from './actions';
 import { Post } from '../../api/types';
+import c from '../constants';
 
-type PostActions = LoadConversationAction;
+type PostActions = GetPostsAction | DeletePostsActions | CreatePostActions
 
 interface PostsState {
   posts: Array<Post>;
@@ -19,6 +19,20 @@ export const postsReducer = (state = INITIAL_STATE, action: PostActions) => {
       return {
         ...state,
         posts: [...state.posts, ...posts]
+      };
+    }
+    case c.CREATE_POST : {
+      const newPost = action.payload;
+      return {
+        ...state,
+        posts: [...state.posts, newPost]
+      };
+    }
+    case c.DELETE_POST: {
+      const postId = action.payload;
+      return {
+        ...state,
+        posts: state.posts.filter(p => p.id !== postId)
       };
     }
     default:

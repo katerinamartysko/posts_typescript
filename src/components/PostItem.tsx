@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
 import { Post } from '../api/types';
+import MyButton from '../ui/button/MyButton';
 import '../App.css'
 
 interface Props {
   post: Post;
+  remove: (postId: number) => void
 }
 
-export const PostItem: FC<Props> = ({ post }) => {
+export const PostItem: FC<Props> = ({ post, remove }) => {
   return (
     <div className="root">
       <div className="content">
@@ -14,6 +16,14 @@ export const PostItem: FC<Props> = ({ post }) => {
         <div>
           {post.body}
         </div>
+      </div>
+      <div>
+      <MyButton>
+        ОТКРЫТЬ
+      </MyButton>
+      <MyButton onClick={() => remove(post.id)}>
+        УДАЛИТЬ
+      </MyButton>
       </div>
     </div>
   );
