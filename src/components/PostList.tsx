@@ -3,11 +3,12 @@ import { PostItem } from './PostItem';
 import { Post } from '../api/types';
 
 interface Props {
-  posts: Array<Post>,
-  title: string
+  posts: Array<Post>;
+  title: string;
+  remove: (postId: number) => void
 }
 
-const PostList: FC<Props> = ({ posts, title }) => {
+const PostList: FC<Props> = ({ posts, title, remove }) => {
   if (!posts.length)
     return <h1 className="noPost"> Постов не найдено </h1>;
 
@@ -17,7 +18,7 @@ const PostList: FC<Props> = ({ posts, title }) => {
         {title}
       </h1>
       {posts.map((post,) => (
-        <PostItem key={post.id} post={post}  />
+        <PostItem key={post.id} remove={remove} post={post}  />
       ))}
 
     </div>
