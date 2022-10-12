@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
+import MyButton from './ui/button/MyButton';
 import { Post } from '../api/types';
-import MyButton from '../ui/button/MyButton';
 import '../App.css'
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export const PostItem: FC<Props> = ({ post, remove }) => {
+  const navigate = useNavigate();
   return (
     <div className="root">
       <div className="content">
@@ -18,7 +20,7 @@ export const PostItem: FC<Props> = ({ post, remove }) => {
         </div>
       </div>
       <div className="postButton">
-      <MyButton>
+      <MyButton onClick={() => navigate(`/posts/${post.id}`)}>
         ОТКРЫТЬ
       </MyButton>
       <MyButton onClick={() => remove(post.id)}>

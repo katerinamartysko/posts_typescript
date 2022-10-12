@@ -14,3 +14,10 @@ export interface Filter {
   sort: KeyofPost | null;
   query: KeyofPost | null;
 }
+
+export interface Comments {
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+}
