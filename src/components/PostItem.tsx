@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Post } from '../api/types';
-import MyButton from '../ui/button/MyButton';
+import MyButton from './ui/button/MyButton';
 import '../App.css'
 
 interface Props {

@@ -5,15 +5,15 @@ import { useFetching } from '../hooks/useFetching';
 import { createPost, deletePost, getPosts } from '../store/posts/actions';
 import { getPageCount } from '../utils/pages';
 import PostList from '../components/PostList';
-import Loader from '../ui/Loader/Loader';
 import { State } from '../store/store';
 import { Filter, Post } from '../api/types';
-import '../App.css';
 import PostForm from '../components/PostForm';
-import MyModal from '../ui/modal/MyModal';
-import MyButton from '../ui/button/MyButton';
 import PostFilter from '../components/PostFilter';
 import { usePosts } from '../hooks/usePosts';
+import MyButton from '../components/ui/button/MyButton';
+import Loader from '../components/ui/Loader/Loader';
+import MyModal from '../components/ui/modal/MyModal';
+import '../App.css';
 
 const Posts = () => {
   const dispatch = useDispatch();
