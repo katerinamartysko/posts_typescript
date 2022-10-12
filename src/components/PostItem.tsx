@@ -17,7 +17,7 @@ export const PostItem: FC<Props> = ({ post, remove }) => {
           {post.body}
         </div>
       </div>
-      <div>
+      <div className="postButton">
       <MyButton>
         ОТКРЫТЬ
       </MyButton>
