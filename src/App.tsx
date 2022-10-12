@@ -1,11 +1,11 @@
 import React from 'react';
-import Posts from './pages/Posts';
+import AppRouter from './AppRouter';
 import './App.css';
 
 const App = () => {
   return (
     <div className="App">
-     <Posts/>
+      <AppRouter />
     </div>
   );
 }
