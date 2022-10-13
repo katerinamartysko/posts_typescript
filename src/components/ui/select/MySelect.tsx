@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 interface Options {
-  id: string
-  value: string
-  name: string
+  id: string;
+  value: string;
+  name: string;
 }
 
 interface Props {
-  options: Array<Options>
+  options: Array<Options>;
   defaultValue: string;
-  onChange: (select: string) => void
+  onChange: (select: string) => void;
   value: string;
-
 }
 
-const MySelect = ({ options, defaultValue, onChange, value }: Props) => {
+const MySelect: FC<Props> = ({ options, defaultValue, onChange, value }) => {
   return (
     <select
       value={value}
