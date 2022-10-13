@@ -1,13 +1,23 @@
-import React from 'react';
-import AppRouter from './AppRouter';
-import './App.css';
+import React, { useState } from 'react';
+import { AuthContext } from './contex';
+import AppRouter from './components/AppRouter';
+import './App.css'
 
 const App = () => {
+  const auth = localStorage.getItem('auth');
+  const [isAuth, setIsAuth] = useState<number>(Number(auth));
+
   return (
-    <div className="App">
+    <AuthContext.Provider
+      value={{
+        isAuth,
+        setIsAuth
+      }}
+    >
       <AppRouter />
-    </div>
+    </AuthContext.Provider>
+
   );
-}
+};
 
 export default App;
