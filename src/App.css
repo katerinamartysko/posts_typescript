@@ -5,6 +5,7 @@
     margin-top: 16px;
     justify-content: space-between;
     align-items: center;
+    font-family: "Palatino", serif;
 }
 
 .App {
@@ -13,13 +14,51 @@
     margin-right: auto;
 }
 
+.title {
+    font-family: "Palatino", serif;
+    color: #026868;
+}
+.postTitle {
+font-size: 18px;
+}
+
 .myInp {
     width: 90%;
     padding: 4px 16px;
     margin: 4px 0;
     border: 2px solid teal;
 }
+
 .postButton {
     display: flex;
     flex-direction: column;
+}
+
+.noMatch {
+    color: #a22c2c;
+    font-family: monospace;
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+}
+
+.noPage {
+    color: #a81212;
+    font-family: monospace;
+    font-size: x-large;
+    display: flex;
+    justify-content: center;
+}
+
+.titleCom {
+    font-family: "Courier New", monospace;
+    color: hotpink;
+}
+
+.comments {
+    border: 1px solid teal;
+    margin: 16px;
+    padding: 0 12px 12px 12px;
+    font-family: "Palatino", serif;
+
 }
