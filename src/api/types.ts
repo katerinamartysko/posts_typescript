@@ -21,3 +21,8 @@ export interface Comments {
   email: string;
   body: string;
 }
+
+export interface AuthContextType {
+  isAuth: number;
+  setIsAuth: (number: number) => void | undefined;
+}
