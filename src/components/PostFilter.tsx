@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import MySelect from '../ui/select/MySelect';
+import MySelect from './ui/select/MySelect';
 import { Filter, KeyofPost } from '../api/types';
 
 interface Props {
