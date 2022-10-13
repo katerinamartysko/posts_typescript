@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import MySelect from '../ui/select/MySelect';
+import MySelect from './ui/select/MySelect';
 import { Filter, KeyofPost } from '../api/types';
 
 interface Props {
@@ -11,6 +11,7 @@ const PostFilter: FC<Props> = ({ filter, setFilter }) => {
   return (
     <div>
       <input
+        className="myInp"
         value={filter.query || ''}
         onChange={event => setFilter({ ...filter, query: event.target.value as KeyofPost })}
         placeholder="Поиск..."

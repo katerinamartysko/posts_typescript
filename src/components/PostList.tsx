@@ -14,7 +14,7 @@ const PostList: FC<Props> = ({ posts, title, remove }) => {
 
   return (
     <div className="App">
-      <h1 style={{ textAlign: 'center' }}>
+      <h1 className="title">
         {title}
       </h1>
       {posts.map((post,) => (
