@@ -1,15 +1,17 @@
-import { CreatePostActions, DeletePostsActions, GetPostsAction } from './actions';
+import { ChangePageActions, CreatePostActions, DeletePostsActions, GetPostsAction } from './actions';
 import { Post } from '../../api/types';
 import c from '../constants';
 
-type PostActions = GetPostsAction | DeletePostsActions | CreatePostActions
+type PostActions = GetPostsAction | DeletePostsActions | CreatePostActions | ChangePageActions
 
 interface PostsState {
   posts: Array<Post>;
+  page: number;
 }
 
 const INITIAL_STATE: PostsState = {
-  posts: []
+  posts: [],
+  page: 1,
 };
 
 export const postsReducer = (state = INITIAL_STATE, action: PostActions) => {
@@ -33,6 +35,13 @@ export const postsReducer = (state = INITIAL_STATE, action: PostActions) => {
       return {
         ...state,
         posts: state.posts.filter(p => p.id !== postId)
+      };
+    }
+    case c.CHANGE_PAGE: {
+      const page = action.payload;
+      return {
+        ...state,
+        page: page
       };
     }
     default:

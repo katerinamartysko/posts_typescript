@@ -6,6 +6,7 @@
     justify-content: space-between;
     align-items: center;
     font-family: "Palatino", serif;
+    margin-bottom: 16px;
 }
 
 .App {
@@ -18,8 +19,9 @@
     font-family: "Palatino", serif;
     color: #026868;
 }
+
 .postTitle {
-font-size: 18px;
+    font-size: 18px;
 }
 
 .myInp {
@@ -60,5 +62,23 @@ font-size: 18px;
     margin: 16px;
     padding: 0 12px 12px 12px;
     font-family: "Palatino", serif;
+}
 
+.page__wrapper{
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.page {
+    padding: 12px;
+    border: 1px solid teal;
+    cursor: pointer;
+    margin: 1px;
+    align-items: center;
+}
+
+.page__current {
+    border: 2px solid hotpink;
+    font-weight: bold;
 }
