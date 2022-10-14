@@ -64,7 +64,7 @@
     font-family: "Palatino", serif;
 }
 
-.page__wrapper{
+.page__wrapper {
     margin-top: 32px;
     display: flex;
     justify-content: center;
@@ -81,4 +81,10 @@
 .page__current {
     border: 2px solid hotpink;
     font-weight: bold;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 56px;
 }

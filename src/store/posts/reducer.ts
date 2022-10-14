@@ -41,7 +41,7 @@ export const postsReducer = (state = INITIAL_STATE, action: PostActions) => {
       const page = action.payload;
       return {
         ...state,
-        page: page
+        page
       };
     }
     default:

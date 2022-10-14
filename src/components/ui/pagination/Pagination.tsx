@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { getPagesArray } from '../../../utils/pages';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
   changePage: any;
 }
 
-const Pagination = ({ totalPages, page, changePage }: Props) => {
+const Pagination: FC<Props> = ({ totalPages, page, changePage }: Props) => {
   const pagesArray = getPagesArray(totalPages);
   return (
     <div className="page__wrapper">
