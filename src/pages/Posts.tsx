@@ -38,17 +38,16 @@ const Posts = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
-  const removePost = (postId: number) => {
+  const removePost = (postId: number): void => {
     dispatch(deletePost(postId));
   };
 
-  const newCreate = (newPost: Post) => {
+  const newCreate = (newPost: Post): void => {
     dispatch(createPost(newPost));
     setModal(false);
   };
-  const changePage1 = (page: number) => {
+  const handleChangePage = (page: number): void => {
     dispatch(changePage(page));
-    // setPage(page);
   };
 
   return (
@@ -67,13 +66,13 @@ const Posts = () => {
       <PostList remove={removePost} posts={sortedAndSearchPosts} title="ПОСТЫ" />
 
       {isPostsLoading &&
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 56 }}>
+        <div className="loader">
           <Loader />
         </div>
       }
       <Pagination
         page={page}
-        changePage={changePage1}
+        changePage={handleChangePage}
         totalPages={totalPages}
       />
     </div>
