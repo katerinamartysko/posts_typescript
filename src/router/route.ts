@@ -3,6 +3,7 @@ import Posts from '../pages/Posts';
 import PostIdPage from '../pages/PostIdPage';
 import NoMatch from '../pages/NoMatch';
 import Login from '../pages/Login';
+import NoMatchLogin from '../pages/NoMatchLogin';
 
 export const privateRoutes = [
   { path: '/about', components: About },
@@ -13,5 +14,5 @@ export const privateRoutes = [
 
 export const publicRoutes = [
   { path: '/login', components: Login },
-  { path: '*', components: NoMatch }
+  { path: '*', components: NoMatchLogin }
 ];
