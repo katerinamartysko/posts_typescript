@@ -11,6 +11,7 @@ const PostFilter: FC<Props> = ({ filter, setFilter }) => {
   return (
     <div>
       <input
+        className="myInp"
         value={filter.query || ''}
         onChange={event => setFilter({ ...filter, query: event.target.value as KeyofPost })}
         placeholder="Поиск..."

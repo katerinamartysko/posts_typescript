@@ -64,7 +64,7 @@ const Posts = () => {
       <PostFilter filter={filter} setFilter={setFilter} />
 
       {postError && <h1 className="error">Произошла ошибка {postError}</h1>}
-      <PostList remove={removePost} posts={sortedAndSearchPosts} title="ПОСТЫ ПРО JS" />
+      <PostList remove={removePost} posts={sortedAndSearchPosts} title="ПОСТЫ" />
 
       {isPostsLoading &&
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 56 }}>
