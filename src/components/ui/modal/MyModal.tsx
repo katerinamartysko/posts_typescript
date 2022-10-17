@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import classes from './MyModal.module.css';
 
 interface Props {
-  children: boolean;
+  children: ReactNode;
   visible: boolean;
   setVisible: (visible: boolean) => void;
 }
