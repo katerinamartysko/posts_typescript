@@ -11,8 +11,9 @@ const App = () => {
     <AuthContext.Provider
       value={{
         isAuth,
-        setIsAuth
-      }}>
+        setIsAuth,
+      }}
+    >
       <AppRouter />
     </AuthContext.Provider>
   );
