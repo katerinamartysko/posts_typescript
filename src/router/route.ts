@@ -9,10 +9,10 @@ export const privateRoutes = [
   { path: '/about', components: About },
   { path: '/posts', components: Posts },
   { path: '/posts/:id', components: PostIdPage },
-  { path: '*', components: NoMatch }
+  { path: '*', components: NoMatch },
 ];
 
 export const publicRoutes = [
   { path: '/login', components: Login },
-  { path: '*', components: NoMatchLogin }
+  { path: '*', components: NoMatchLogin },
 ];

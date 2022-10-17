@@ -16,22 +16,14 @@ export const PostItem: FC<Props> = ({ post, remove }) => {
       <div className="content">
         <strong>
           <div className="postTitle">
-            {post.id}.
-            {post.title}
+            {post.id}.{post.title}
           </div>
-
         </strong>
-        <div>
-          {post.body}
-        </div>
+        <div>{post.body}</div>
       </div>
       <div className="postButton">
-        <MyButton onClick={() => navigate(`/posts/${post.id}`)}>
-          ОТКРЫТЬ
-        </MyButton>
-        <MyButton onClick={() => remove(post.id)}>
-          УДАЛИТЬ
-        </MyButton>
+        <MyButton onClick={() => navigate(`/posts/${post.id}`)}>ОТКРЫТЬ</MyButton>
+        <MyButton onClick={() => remove(post.id)}>УДАЛИТЬ</MyButton>
       </div>
     </div>
   );

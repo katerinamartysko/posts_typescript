@@ -15,16 +15,15 @@ interface Props {
 
 const MySelect: FC<Props> = ({ options, defaultValue, onChange, value }) => {
   return (
-    <select
-      value={value}
-      onChange={event => onChange(event.target.value)}
-    >
-      <option disabled value="">{defaultValue}</option>
-      {options.map(option =>
+    <select value={value} onChange={event => onChange(event.target.value)}>
+      <option disabled value="">
+        {defaultValue}
+      </option>
+      {options.map(option => (
         <option key={option.id} value={option.value}>
           {option.name}
         </option>
-      )}
+      ))}
     </select>
   );
 };

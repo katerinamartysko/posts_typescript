@@ -35,7 +35,6 @@ const Posts = () => {
 
   useEffect(() => {
     fetchPosts(limit, page);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   const removePost = (postId: number): void => {
@@ -65,19 +64,14 @@ const Posts = () => {
       {postError && <h1 className="error">Произошла ошибка {postError}</h1>}
       <PostList remove={removePost} posts={sortedAndSearchPosts} title="ПОСТЫ" />
 
-      {isPostsLoading &&
+      {isPostsLoading && (
         <div className="loader">
           <Loader />
         </div>
-      }
-      <Pagination
-        page={page}
-        changePage={handleChangePage}
-        totalPages={totalPages}
-      />
+      )}
+      <Pagination page={page} changePage={handleChangePage} totalPages={totalPages} />
     </div>
   );
-
 };
 
 export default Posts;

@@ -2,8 +2,7 @@ enum c {
   GET_POSTS = 'GET_POSTS',
   DELETE_POST = 'DELETE_POST',
   CREATE_POST = 'CREATE_POST',
-  CHANGE_PAGE = 'CHANGE_PAGE'
+  CHANGE_PAGE = 'CHANGE_PAGE',
 }
 
 export default c;
-

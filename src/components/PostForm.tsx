@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC, MouseEvent, useState } from 'react';
-import { Post } from '../api/types';
 import MyButton from './ui/button/MyButton';
+import { Post } from '../api/types';
 
 interface Props {
   create: (post: Post) => void;
