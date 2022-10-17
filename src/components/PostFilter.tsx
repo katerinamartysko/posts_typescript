@@ -13,13 +13,13 @@ const PostFilter: FC<Props> = ({ filter, setFilter }) => {
       <input
         className="myInp"
         value={filter.query || ''}
-        onChange={event => setFilter({ ...filter, query: event.target.value as KeyofPost })}
+        onChange={(event) => setFilter({ ...filter, query: event.target.value as KeyofPost })}
         placeholder="Поиск..."
       />
 
       <MySelect
         value={filter.sort || ''}
-        onChange={selectedSort => setFilter({ ...filter, sort: selectedSort as KeyofPost })}
+        onChange={(selectedSort) => setFilter({ ...filter, sort: selectedSort as KeyofPost })}
         defaultValue="Сортировка по:"
         options={[
           { id: '0.', value: 'title', name: 'По названию ' },
@@ -31,4 +31,3 @@ const PostFilter: FC<Props> = ({ filter, setFilter }) => {
 };
 
 export default PostFilter;
-
