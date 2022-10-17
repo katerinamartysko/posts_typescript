@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AuthContext } from './contex';
 import AppRouter from './components/AppRouter';
-import './App.css'
+import './App.css';
 
 const App = () => {
   const auth = localStorage.getItem('auth');
@@ -12,11 +12,9 @@ const App = () => {
       value={{
         isAuth,
         setIsAuth
-      }}
-    >
+      }}>
       <AppRouter />
     </AuthContext.Provider>
-
   );
 };
 
