@@ -23,31 +23,34 @@ const PostIdPage = () => {
   useEffect(() => {
     fetchPostById(params.id);
     fetchComments(params.id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!post) return <Loader />;
   return (
     <div>
       <h1>ВЫ ОТКРЫЛИ СТРАНИЦУ С ПОСТА ID {params.id}</h1>
-      {isLoading
-        ? <Loader />
-        : <div>{post.id}. {post.title}
-          <div>{post.body}
-          </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div>
+          {post.id}. {post.title}
+          <div>{post.body}</div>
         </div>
-      }
+      )}
       <h1 className="titleCom">Коментарии</h1>
-      {isCommentsLoading
-        ? <Loader />
-        : <div> {comments.map(comment =>
-          <div key={comment.id} className="comments">
-            <h5>{comment.email}</h5>
-            <div>{comment.body}</div>
-          </div>
-        )}
+      {isCommentsLoading ? (
+        <Loader />
+      ) : (
+        <div>
+          {' '}
+          {comments.map(comment => (
+            <div key={comment.id} className="comments">
+              <h5>{comment.email}</h5>
+              <div>{comment.body}</div>
+            </div>
+          ))}
         </div>
-      }
+      )}
     </div>
   );
 };

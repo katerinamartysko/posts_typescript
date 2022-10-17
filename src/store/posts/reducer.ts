@@ -2,7 +2,7 @@ import { ChangePageActions, CreatePostActions, DeletePostsActions, GetPostsActio
 import { Post } from '../../api/types';
 import c from '../constants';
 
-type PostActions = GetPostsAction | DeletePostsActions | CreatePostActions | ChangePageActions
+type PostActions = GetPostsAction | DeletePostsActions | CreatePostActions | ChangePageActions;
 
 interface PostsState {
   posts: Array<Post>;
@@ -16,32 +16,32 @@ const INITIAL_STATE: PostsState = {
 
 export const postsReducer = (state = INITIAL_STATE, action: PostActions) => {
   switch (action.type) {
-    case c.GET_POSTS : {
+    case c.GET_POSTS: {
       const posts = action.payload;
       return {
         ...state,
-        posts: [...state.posts, ...posts]
+        posts: [...state.posts, ...posts],
       };
     }
-    case c.CREATE_POST : {
+    case c.CREATE_POST: {
       const newPost = action.payload;
       return {
         ...state,
-        posts: [...state.posts, newPost]
+        posts: [...state.posts, newPost],
       };
     }
     case c.DELETE_POST: {
       const postId = action.payload;
       return {
         ...state,
-        posts: state.posts.filter(p => p.id !== postId)
+        posts: state.posts.filter(p => p.id !== postId),
       };
     }
     case c.CHANGE_PAGE: {
       const page = action.payload;
       return {
         ...state,
-        page
+        page,
       };
     }
     default:

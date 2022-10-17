@@ -1,90 +1,90 @@
 .root {
-    display: flex;
-    padding: 16px;
-    border: 2px solid teal;
-    margin-top: 16px;
-    justify-content: space-between;
-    align-items: center;
-    font-family: "Palatino", serif;
-    margin-bottom: 16px;
+  display: flex;
+  padding: 16px;
+  border: 2px solid teal;
+  margin-top: 16px;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Palatino', serif;
+  margin-bottom: 16px;
 }
 
 .App {
-    width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .title {
-    font-family: "Palatino", serif;
-    color: #026868;
+  font-family: 'Palatino', serif;
+  color: #026868;
 }
 
 .postTitle {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .myInp {
-    width: 90%;
-    padding: 4px 16px;
-    margin: 4px 0;
-    border: 2px solid teal;
+  width: 90%;
+  padding: 4px 16px;
+  margin: 4px 0;
+  border: 2px solid teal;
 }
 
 .postButton {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .noMatch {
-    color: #a22c2c;
-    font-family: monospace;
-    font-size: xx-large;
-    display: flex;
-    justify-content: center;
+  color: #a22c2c;
+  font-family: monospace;
+  font-size: xx-large;
+  display: flex;
+  justify-content: center;
 }
 
 .noPage {
-    color: #a81212;
-    font-family: monospace;
-    font-size: x-large;
-    display: flex;
-    justify-content: center;
+  color: #a81212;
+  font-family: monospace;
+  font-size: x-large;
+  display: flex;
+  justify-content: center;
 }
 
 .titleCom {
-    font-family: "Courier New", monospace;
-    color: hotpink;
+  font-family: 'Courier New', monospace;
+  color: hotpink;
 }
 
 .comments {
-    border: 1px solid teal;
-    margin: 16px;
-    padding: 0 12px 12px 12px;
-    font-family: "Palatino", serif;
+  border: 1px solid teal;
+  margin: 16px;
+  padding: 0 12px 12px 12px;
+  font-family: 'Palatino', serif;
 }
 
 .page__wrapper {
-    margin-top: 32px;
-    display: flex;
-    justify-content: center;
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
 }
 
 .page {
-    padding: 12px;
-    border: 1px solid teal;
-    cursor: pointer;
-    margin: 1px;
-    align-items: center;
+  padding: 12px;
+  border: 1px solid teal;
+  cursor: pointer;
+  margin: 1px;
+  align-items: center;
 }
 
 .page__current {
-    border: 2px solid hotpink;
-    font-weight: bold;
+  border: 2px solid hotpink;
+  font-weight: bold;
 }
 
 .loader {
-    display: flex;
-    justify-content: center;
-    margin-top: 56px;
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
 }

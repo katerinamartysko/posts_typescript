@@ -3,7 +3,7 @@ import { AuthContextType } from '../api/types';
 
 const authContext: AuthContextType = {
   isAuth: 0,
-  setIsAuth: () => undefined
+  setIsAuth: () => undefined,
 };
 
 export const AuthContext = createContext(authContext);

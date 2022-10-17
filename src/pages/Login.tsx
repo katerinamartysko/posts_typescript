@@ -3,7 +3,6 @@ import { AuthContext } from '../contex';
 import { useNavigate } from 'react-router-dom';
 import MyButton from '../components/ui/button/MyButton';
 
-
 const Login = () => {
   const { setIsAuth } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -22,7 +21,6 @@ const Login = () => {
         <input className="myInp" type="text" placeholder="Введите логин" />
         <input className="myInp" type="password" placeholder="Введите пароль" />
         <MyButton>ВОЙТИ </MyButton>
-
       </form>
     </div>
   );
