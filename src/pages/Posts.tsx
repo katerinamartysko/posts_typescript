@@ -12,9 +12,19 @@ import PostList from '../components/PostList';
 import PostFilter from '../components/PostFilter';
 import Loader from '../components/ui/Loader/Loader';
 import MyModal from '../components/ui/modal/MyModal';
-import MyButton from '../components/ui/button/MyButton';
 import Pagination from '../components/ui/pagination/Pagination';
+import { AppTheme } from '../utils/them';
+import { Button } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
 import '../App.css';
+
+const useStyles = makeStyles()((theme: AppTheme) => ({
+  button: {
+    padding: theme.spacing(0.5),
+    marginTop: theme.spacing(2),
+    marginLeft: theme.spacing(1),
+  },
+}));
 
 const Posts = () => {
   const dispatch = useDispatch();
@@ -25,6 +35,7 @@ const Posts = () => {
   const [totalPages, setTotalPages] = useState<number>(0);
   const [filter, setFilter] = useState<Filter>({ sort: null, query: null });
   const sortedAndSearchPosts = usePosts(posts, filter.sort, filter.query);
+  const { classes } = useStyles();
 
   const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit: number, page: number) => {
     const response = await PostService.getAll(limit, page);
@@ -51,9 +62,9 @@ const Posts = () => {
 
   return (
     <div>
-      <MyButton style={{ marginTop: 32, marginLeft: 8 }} onClick={() => setModal(true)}>
+      <Button className={classes.button} variant="outlined" onClick={() => setModal(true)}>
         Создать пользователя
-      </MyButton>
+      </Button>
 
       <MyModal visible={modal} setVisible={setModal}>
         <PostForm create={newCreate} />
