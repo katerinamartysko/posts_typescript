@@ -27,15 +27,18 @@ const useStyles = makeStyles()((theme: AppTheme) => ({
 }));
 
 const Posts = () => {
+  const { classes } = useStyles();
   const dispatch = useDispatch();
+
   const posts = useSelector((state: State) => state.posts.posts);
   const page = useSelector((state: State) => state.posts.page);
+
   const [limit] = useState<number>(10);
   const [modal, setModal] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [filter, setFilter] = useState<Filter>({ sort: null, query: null });
+
   const sortedAndSearchPosts = usePosts(posts, filter.sort, filter.query);
-  const { classes } = useStyles();
 
   const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit: number, page: number) => {
     const response = await PostService.getAll(limit, page);
