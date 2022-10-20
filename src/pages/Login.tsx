@@ -1,6 +1,6 @@
 import React, { FormEvent, useContext } from 'react';
 import { AuthContext } from '../contex';
-import { Button } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { makeStyles } from 'tss-react/mui';
 import { AppTheme } from '../utils/them';
@@ -18,6 +18,8 @@ const useStyles = makeStyles()((theme: AppTheme) => ({
   },
   myInp: {
     marginLeft: theme.spacing(1),
+    width: '70%',
+    padding: theme.spacing(0.5, 1),
   },
 }));
 const Login = () => {
@@ -36,8 +38,20 @@ const Login = () => {
     <div>
       <h1>Страница для логина</h1>
       <form className={classes.root} onSubmit={login}>
-        <input className="myInp" type="text" placeholder="Введите логин" />
-        <input className="myInp" type="password" placeholder="Введите пароль" />
+        <TextField
+          id="outlined-basic"
+          label="      Введите логин"
+          variant="outlined"
+          className={classes.myInp}
+          type="text"
+        />
+        <TextField
+          id="outlined-basic"
+          label="      Введите пароль"
+          variant="outlined"
+          className={classes.myInp}
+          type="text"
+        />
         <Button className={classes.login} variant="outlined" type="submit">
           ВОЙТИ
         </Button>
