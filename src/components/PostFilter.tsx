@@ -10,6 +10,11 @@ const useStyles = makeStyles()((theme: AppTheme) => ({
     marginTop: theme.spacing(2),
     marginLeft: theme.spacing(1),
   },
+  myInp: {
+    width: '90%',
+    padding: theme.spacing(0.5, 1),
+    margin: theme.spacing(0.5, 0),
+  },
 }));
 
 interface Props {
@@ -29,7 +34,7 @@ const PostFilter: FC<Props> = ({ filter, setFilter }) => {
         id="outlined-basic"
         label="Поиск..."
         variant="outlined"
-        className="myInp"
+        className={classes.myInp}
         value={filter.query || ''}
         onChange={event => setFilter({ ...filter, query: event.target.value as KeyofPost })}
       />
