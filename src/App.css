@@ -24,12 +24,6 @@
   font-size: 18px;
 }
 
-.myInp {
-  width: 90%;
-  padding: 4px 16px;
-  margin: 4px 0;
-  border: 2px solid teal;
-}
 
 .postButton {
   display: flex;
