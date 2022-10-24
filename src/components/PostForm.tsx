@@ -1,9 +1,8 @@
-import React, { ChangeEvent, FC, FormEvent, MouseEvent, useState } from 'react';
+import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
 import { Post } from '../api/types';
-import { Button, TextField } from '@mui/material';
+import { Alert, Button, TextField } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { AppTheme } from '../utils/them';
-import Error from './Error';
 
 const useStyles = makeStyles()((theme: AppTheme) => ({
   button: {
@@ -12,7 +11,7 @@ const useStyles = makeStyles()((theme: AppTheme) => ({
   },
   myInp: {
     width: '90%',
-    padding: theme.spacing(0.5, 1),
+    margin: theme.spacing(0.7, 0),
   },
 }));
 
@@ -25,29 +24,31 @@ const PostForm: FC<Props> = ({ create }) => {
   const [error, setError] = useState<string | null>(null);
   const [post, setPost] = useState({ title: '', body: '' });
 
-  const addNewPost = (e: MouseEvent) => {
-    e.preventDefault();
+  const submitHandler = async (event: FormEvent): Promise<void> => {
+    event.preventDefault();
+    setError(null);
+
     const newPost: Post = {
       ...post,
       userId: 1,
       id: Date.now(),
     };
-    create(newPost);
-    setPost({ title: '', body: '' });
-  };
 
-  const submitHandler = async (event: FormEvent): Promise<void> => {
-    event.preventDefault();
-    setError(null);
-
-    if (post.body.trim().length === 0) {
+    if (post.body.trim().length === 0 && post.title.trim().length === 0) {
       setError('Введите значение');
+      return;
+    }
+    if (post.body.trim().length === 0) {
+      setError('Введите значение для описания');
       return;
     }
     if (post.title.trim().length === 0) {
-      setError('Введите значение');
+      setError('Введите значение для заголовка');
       return;
     }
+
+    create(newPost);
+    setPost({ title: '', body: '' });
   };
 
   const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -72,8 +73,10 @@ const PostForm: FC<Props> = ({ create }) => {
         value={post.body}
         onChange={e => setPost({ ...post, body: e.target.value })}
       />
-      <Error error={error} />
-      <Button className={classes.button} variant="outlined" onClick={addNewPost}>
+
+      {error !== null && <Alert severity="error">{error}</Alert>}
+
+      <Button className={classes.button} variant="outlined" type="submit">
         Создать пост
       </Button>
     </form>

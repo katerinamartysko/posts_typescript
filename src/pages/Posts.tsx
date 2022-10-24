@@ -30,7 +30,8 @@ const useStyles = makeStyles()((theme: AppTheme) => ({
     width: 400,
     background: '#FFFFFF',
     border: '2px solid #000',
-    padding: 4,
+    borderRadius: 15,
+    padding: theme.spacing(2),
   },
 }));
 
@@ -81,12 +82,7 @@ const Posts = () => {
         <Button onClick={handleOpen} className={classes.button} variant="outlined">
           Создать пользователя
         </Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
+        <Modal open={open} onClose={handleClose}>
           <Box className={classes.style}>
             <PostForm create={newCreate} />
           </Box>
