@@ -10,10 +10,9 @@ import { usePosts } from '../hooks/usePosts';
 import PostForm from '../components/PostForm';
 import PostList from '../components/PostList';
 import PostFilter from '../components/PostFilter';
-import Loader from '../components/ui/Loader/Loader';
 import Pagination from '../components/ui/pagination/Pagination';
 import { AppTheme } from '../utils/them';
-import { Box, Button, Modal } from '@mui/material';
+import { Box, Button, CircularProgress, Modal } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import '../App.css';
 
@@ -100,9 +99,9 @@ const Posts = () => {
       <PostList remove={removePost} posts={sortedAndSearchPosts} title="ПОСТЫ" />
 
       {isPostsLoading && (
-        <div className="loader">
-          <Loader />
-        </div>
+        <Box sx={{ display: 'flex' }}>
+          <CircularProgress />
+        </Box>
       )}
       <Pagination page={page} changePage={handleChangePage} totalPages={totalPages} />
     </div>

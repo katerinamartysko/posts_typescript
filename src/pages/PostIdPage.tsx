@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import PostService from '../api/PostService';
 import { Comments, Post } from '../api/types';
 import { useFetching } from '../hooks/useFetching';
-import Loader from '../components/ui/Loader/Loader';
+import { Box, CircularProgress } from '@mui/material';
 
 const PostIdPage = () => {
   const params = useParams();
@@ -25,12 +25,17 @@ const PostIdPage = () => {
     fetchComments(params.id);
   }, []);
 
-  if (!post) return <Loader />;
+  if (!post)
+    return (
+      <Box sx={{ display: 'flex' }}>
+        <CircularProgress />
+      </Box>
+    );
   return (
     <div>
       <h1>ВЫ ОТКРЫЛИ СТРАНИЦУ С ПОСТА ID {params.id}</h1>
       {isLoading ? (
-        <Loader />
+        <CircularProgress />
       ) : (
         <div>
           {post.id}. {post.title}
@@ -39,7 +44,7 @@ const PostIdPage = () => {
       )}
       <h1 className="titleCom">Коментарии</h1>
       {isCommentsLoading ? (
-        <Loader />
+        <CircularProgress />
       ) : (
         <div>
           {' '}
