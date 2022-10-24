@@ -11,10 +11,9 @@ import PostForm from '../components/PostForm';
 import PostList from '../components/PostList';
 import PostFilter from '../components/PostFilter';
 import Loader from '../components/ui/Loader/Loader';
-import MyModal from '../components/ui/modal/MyModal';
 import Pagination from '../components/ui/pagination/Pagination';
 import { AppTheme } from '../utils/them';
-import { Button } from '@mui/material';
+import { Box, Button, Modal } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import '../App.css';
 
@@ -24,17 +23,31 @@ const useStyles = makeStyles()((theme: AppTheme) => ({
     marginTop: theme.spacing(2),
     marginLeft: theme.spacing(1),
   },
+  style: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    background: '#FFFFFF',
+    border: '2px solid #000',
+    padding: 4,
+  },
 }));
 
 const Posts = () => {
   const { classes } = useStyles();
   const dispatch = useDispatch();
 
+  const [open, setOpen] = useState<boolean>(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const posts = useSelector((state: State) => state.posts.posts);
   const page = useSelector((state: State) => state.posts.page);
 
   const [limit] = useState<number>(10);
-  const [modal, setModal] = useState<boolean>(false);
+  const [, setModal] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [filter, setFilter] = useState<Filter>({ sort: null, query: null });
 
@@ -65,13 +78,21 @@ const Posts = () => {
 
   return (
     <div>
-      <Button className={classes.button} variant="outlined" onClick={() => setModal(true)}>
-        Создать пользователя
-      </Button>
-
-      <MyModal visible={modal} setVisible={setModal}>
-        <PostForm create={newCreate} />
-      </MyModal>
+      <div>
+        <Button onClick={handleOpen} className={classes.button} variant="outlined">
+          Создать пользователя
+        </Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box className={classes.style}>
+            <PostForm create={newCreate} />
+          </Box>
+        </Modal>
+      </div>
       <hr style={{ margin: '16px 0' }} />
       <PostFilter filter={filter} setFilter={setFilter} />
 
