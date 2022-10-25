@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { getPagesArray } from '../../../utils/pages';
+import { ButtonGroup } from '@mui/material';
 
 interface Props {
   totalPages: number;
@@ -12,13 +13,15 @@ const Pagination: FC<Props> = ({ totalPages, page, changePage }) => {
   return (
     <div className="page__wrapper">
       {pagesArray.map(currentPage => (
-        <span
+        <ButtonGroup
+          size="small"
+          aria-label="small button group"
           onClick={() => changePage(currentPage)}
           className={page === currentPage ? 'page page__current' : 'page '}
           key={currentPage}
         >
           {currentPage}
-        </span>
+        </ButtonGroup>
       ))}
     </div>
   );
