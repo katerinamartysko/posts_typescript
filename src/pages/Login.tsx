@@ -18,6 +18,7 @@ const useStyles = makeStyles()((theme: AppTheme) => ({
   rootContainer: {
     marginLeft: theme.spacing(1),
     marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(0.5),
   },
   loginButton: {
     width: 90,
@@ -42,7 +43,11 @@ const initialValue: LoginFormValue = {
 
 const validationsSchema = yup.object().shape({
   login: yup.string().typeError('Должно быть строкой').required('Обязательное поле для ввода'),
-  password: yup.string().typeError('Должно быть строкой').required('Обязательное поле для ввода'),
+  password: yup
+    .string()
+    .oneOf([yup.ref('password')], 'Пароли не совпадают')
+    .typeError('Должно быть строкой')
+    .required('Обязательное поле для ввода'),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password')], 'Пароли не совпадают')
@@ -73,7 +78,7 @@ const Login: FC = () => {
                 id="outlined-basic"
                 label="Введите логин"
                 variant="outlined"
-                className={classes.container}
+                className={classNames(classes.container, classes.rootContainer)}
                 type="text"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -86,7 +91,7 @@ const Login: FC = () => {
                 id="outlined-basic"
                 label="Введите пароль"
                 variant="outlined"
-                className={classes.container}
+                className={classNames(classes.container, classes.rootContainer)}
                 type="password"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -95,7 +100,7 @@ const Login: FC = () => {
                 error={touched.password && Boolean(errors.password)}
               />
               {touched.password && errors.password && (
-                <Alert severity="error" className={classNames(classes.container, classes.rootContainer)}>
+                <Alert severity="error" className={classes.container}>
                   {errors.password}
                 </Alert>
               )}
@@ -103,7 +108,7 @@ const Login: FC = () => {
                 id="outlined-basic"
                 label="Повторите  пароль"
                 variant="outlined"
-                className={classes.container}
+                className={classNames(classes.container, classes.rootContainer)}
                 type="password"
                 onChange={handleChange}
                 onBlur={handleBlur}
