@@ -20,6 +20,7 @@ const useStyles = makeStyles()((theme: AppTheme) => ({
   },
   myInp: {
     marginLeft: theme.spacing(1),
+    marginTop: theme.spacing(1),
     width: '70%',
   },
 }));
@@ -27,16 +28,19 @@ const useStyles = makeStyles()((theme: AppTheme) => ({
 interface LoginFormValue {
   login: string;
   password: string;
+  confirmPassword: string;
 }
 
 const initialValue: LoginFormValue = {
   login: '',
   password: '',
+  confirmPassword: '',
 };
 
 const validationsSchema = yup.object().shape({
-  login: yup.string().typeError('Должно быть строкой').required('Обязательно'),
-  password: yup.string().typeError('Должно быть строкой').required('Обязательно'),
+  login: yup.string().typeError('Должно быть строкой').required('Обязательное поле для ввода'),
+  password: yup.string().typeError('Должно быть строкой').required('Обязательное поле для ввода'),
+  confirmPassword: yup.string().typeError('Должно быть строкой').required('Обязательное поле для ввода'),
 });
 
 const Login: FC = () => {
@@ -45,6 +49,7 @@ const Login: FC = () => {
   const { classes } = useStyles();
 
   const login = (values: LoginFormValue): void => {
+    console.log(values);
     setIsAuth(1);
     localStorage.setItem('auth', '1');
     navigate('/posts');
@@ -55,38 +60,49 @@ const Login: FC = () => {
       <h1>Страница для логина</h1>
       <div>
         <Formik initialValues={initialValue} validateOnBlur onSubmit={login} validationSchema={validationsSchema}>
-          {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
+          {({ values, errors, touched, handleChange, handleBlur, isValid, dirty }) => (
             <Form>
-              <div>
-                <TextField
-                  id="outlined-basic"
-                  label="Введите логин"
-                  variant="outlined"
-                  className={classes.myInp}
-                  type="text"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.login}
-                  name="login"
-                />
-              </div>
+              <TextField
+                id="outlined-basic"
+                label="Введите логин"
+                variant="outlined"
+                className={classes.myInp}
+                type="text"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.login}
+                name="login"
+                error={touched.login && Boolean(errors.login)}
+              />
               {touched.login && errors.login && <Alert severity="error">{errors.login}</Alert>}
-              <div>
-                <TextField
-                  id="outlined-basic"
-                  label="Введите пароль"
-                  variant="outlined"
-                  className={classes.myInp}
-                  type="text"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                  name="password"
-                  error={touched.password && Boolean(errors.password)}
-                  helperText={touched.password && errors.password && errors.password}
-                />
-              </div>
+              <TextField
+                id="outlined-basic"
+                label="Введите пароль"
+                variant="outlined"
+                className={classes.myInp}
+                type="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+                name="password"
+                error={touched.password && Boolean(errors.password)}
+              />
               {touched.password && errors.password && <Alert severity="error">{errors.password}</Alert>}
+              <TextField
+                id="outlined-basic"
+                label="Повторите  пароль"
+                variant="outlined"
+                className={classes.myInp}
+                type="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.confirmPassword}
+                name="confirmPassword"
+                error={touched.confirmPassword && Boolean(errors.confirmPassword)}
+              />
+              {touched.confirmPassword && errors.confirmPassword && (
+                <Alert severity="error">{errors.confirmPassword}</Alert>
+              )}
 
               <Button disabled={!isValid && !dirty} type="submit" variant="outlined" className={classes.login}>
                 ВОЙТИ
