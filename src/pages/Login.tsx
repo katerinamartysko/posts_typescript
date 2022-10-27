@@ -40,7 +40,11 @@ const initialValue: LoginFormValue = {
 const validationsSchema = yup.object().shape({
   login: yup.string().typeError('Должно быть строкой').required('Обязательное поле для ввода'),
   password: yup.string().typeError('Должно быть строкой').required('Обязательное поле для ввода'),
-  confirmPassword: yup.string().typeError('Должно быть строкой').required('Обязательное поле для ввода'),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password')], 'Пароли не совпадают')
+    .typeError('Должно быть строкой')
+    .required('Обязательное поле для ввода'),
 });
 
 const Login: FC = () => {
