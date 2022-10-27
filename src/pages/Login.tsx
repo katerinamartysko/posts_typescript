@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Alert, Button, TextField } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { Form, Formik } from 'formik';
+import classNames from 'classnames';
 import * as yup from 'yup';
 import { AppTheme } from '../utils/them';
 import { AuthContext } from '../contex';
@@ -14,13 +15,15 @@ const useStyles = makeStyles()((theme: AppTheme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  login: {
-    marginLeft: theme.spacing(2.5),
-    width: 90,
-  },
-  myInp: {
+  rootContainer: {
     marginLeft: theme.spacing(1),
     marginTop: theme.spacing(1),
+  },
+  loginButton: {
+    width: 90,
+  },
+  container: {
+    padding: 0,
     width: '70%',
   },
 }));
@@ -65,12 +68,12 @@ const Login: FC = () => {
       <div>
         <Formik initialValues={initialValue} validateOnBlur onSubmit={login} validationSchema={validationsSchema}>
           {({ values, errors, touched, handleChange, handleBlur, isValid, dirty }) => (
-            <Form>
+            <Form className={classes.root}>
               <TextField
                 id="outlined-basic"
                 label="Введите логин"
                 variant="outlined"
-                className={classes.myInp}
+                className={classes.container}
                 type="text"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -83,7 +86,7 @@ const Login: FC = () => {
                 id="outlined-basic"
                 label="Введите пароль"
                 variant="outlined"
-                className={classes.myInp}
+                className={classes.container}
                 type="password"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -91,12 +94,16 @@ const Login: FC = () => {
                 name="password"
                 error={touched.password && Boolean(errors.password)}
               />
-              {touched.password && errors.password && <Alert severity="error">{errors.password}</Alert>}
+              {touched.password && errors.password && (
+                <Alert severity="error" className={classNames(classes.container, classes.rootContainer)}>
+                  {errors.password}
+                </Alert>
+              )}
               <TextField
                 id="outlined-basic"
                 label="Повторите  пароль"
                 variant="outlined"
-                className={classes.myInp}
+                className={classes.container}
                 type="password"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -105,10 +112,17 @@ const Login: FC = () => {
                 error={touched.confirmPassword && Boolean(errors.confirmPassword)}
               />
               {touched.confirmPassword && errors.confirmPassword && (
-                <Alert severity="error">{errors.confirmPassword}</Alert>
+                <Alert severity="error" className={classes.container}>
+                  {errors.confirmPassword}
+                </Alert>
               )}
 
-              <Button disabled={!isValid && !dirty} type="submit" variant="outlined" className={classes.login}>
+              <Button
+                disabled={!isValid && !dirty}
+                type="submit"
+                variant="outlined"
+                className={classNames(classes.loginButton, classes.rootContainer)}
+              >
                 ВОЙТИ
               </Button>
             </Form>
